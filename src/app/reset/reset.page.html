@@ -1,0 +1,22 @@
+<ion-toolbar>
+  <ion-buttons>
+    <ion-button [routerLink]="['/home']" class="ionbuttonback">
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content>
+  <div class="ion-padding">
+    <div class="container">
+      <div class="cont">
+        <h2> Veuillez entrer votre adresse mail, un lien de réinitialisation vous y sera envoyé</h2>
+      </div>
+        <div class="wrap-input100">
+					<input class="input100" type="text" name="username" placeholder="Email">
+				</div>	
+    </div>
+    <div style="text-align: center;">
+      <ion-button routerLink = "/accueil" class="ionbutton"> valider </ion-button>
+    </div>
+  </div>
+</ion-content>

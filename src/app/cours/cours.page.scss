@@ -1,0 +1,41 @@
+ion-grid {
+	padding: 0px;
+	border-top: solid 1px #d2cdcd;
+}
+.input-col {
+	padding-left: 10px;
+}
+.send-col {
+	padding: 0px;
+}
+.send-col ion-button {
+	height: 100%;
+	margin: 0px;
+	border-radius: 0px ;
+}
+.send-col button {
+	border-radius: 0px ;
+}
+.send-col ion-icon {
+	font-size: 20px;
+}
+
+.stream ion-item {
+    min-height: 10px ;
+    height: 51px;
+}
+ion-badge {
+    padding: 10px;
+    text-align: left;
+    max-width: 80%;
+}
+
+
+ion-img{
+	width: 200px;
+	margin-bottom: 5px;
+	
+}
+.end{
+	padding-left: 160px;
+}

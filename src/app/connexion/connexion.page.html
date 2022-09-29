@@ -1,0 +1,56 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons >
+      <ion-back-button color="success">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>  
+</ion-header>
+
+
+<ion-content>
+  <div class="ion-padding">
+    <form [formGroup]="userForm" (ngSubmit)="signIn(userForm.value)">
+    <div class="container">
+      <div>
+        <img src="assets/Exclusion.png">
+      </div>
+      <div class="cont">
+        <h2> Connexion </h2>
+      </div>
+        <div class="wrap-input100">
+					<ion-input class="input100" type="text" formControlName="email" placeholder="Email"></ion-input>
+				</div>
+        <ng-container *ngFor="let error of error_msg.email">
+          <div *ngIf="userForm.get('email').hasError(error.type) && (userForm.get('email').dirty || userForm.get('email').touched)">
+            {{ error.message }}
+          </div>
+        </ng-container>
+        <div class="wrap-input100">
+					<input class="input100" type="password" formControlName="password" placeholder="Mot de passe">
+				</div>
+        <ng-container *ngFor="let error of error_msg.password">
+          <div *ngIf="userForm.get('password').hasError(error.type) && (userForm.get('password').dirty || userForm.get('password').touched)">
+            {{ error.message }}
+          </div>
+      </ng-container>	
+    </div>
+    <ion-row>
+      <ion-col size="12"> 
+          <a  routerLink ="/reset">
+            Mot de passe oublié ?
+          </a>
+      </ion-col>
+    </ion-row>
+    <div style="text-align: center;">
+      <ion-button type="submit" [disabled]="!userForm.valid" class="ionbutton" (click)=" autoHideShow()"> Se connecter </ion-button>
+      <label class="ion-text-center" color="danger">{{errorMsg}}</label>
+    </div>
+    <h1 class="ion-text-center">
+      <a  (click)="goToSignup()">
+        Creer un compte
+      </a>
+    </h1>
+  </form>
+  </div>
+</ion-content>

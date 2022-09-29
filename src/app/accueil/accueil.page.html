@@ -1,0 +1,41 @@
+<ion-toolbar class="padding" style="padding-top: 20px;">
+    <ion-buttons slot="start" color="success">
+      <ion-button type="submit" (click)="signOut()">
+        <ion-icon name="log-out"></ion-icon>
+        <ion-label>log-out</ion-label>
+      </ion-button>
+    </ion-buttons>
+    <ion-title slot="end">
+      <!-- Bienvenue {{userDetail}} -->
+    </ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-button class="ionbuttonback">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+</ion-toolbar>
+
+<ion-content [fullscreen]="true">
+  <div class="padding">
+    <ion-searchbar placeholder="Search" inputmode="search" type="decimal"  [debounce]="250" showCancelButton="never" searchIcon="search">
+    </ion-searchbar>
+    <ion-list-header>
+      <ion-label>Cours</ion-label>
+      <ion-button [routerLink]="['/cours']">
+        Afficher tout
+      </ion-button>
+    </ion-list-header>
+    <ion-card *ngFor="let c of Cours" (click)="gotoChat(c)">
+      <ion-card-header>
+        <ion-card-subtitle></ion-card-subtitle>
+        <ion-card-title>{{c.titre}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content >
+        {{c.description}}
+      </ion-card-content>
+      <ion-badge class="i-badge2">{{c.msg}}</ion-badge>
+      <ion-badge class="i-badge1">{{c.nonlus}}</ion-badge>
+    </ion-card>
+  </div>
+  
+</ion-content>

@@ -1,0 +1,51 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{cours.titre}}</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button color="success"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+  <div class="stream"  >
+    <ion-item lines="none" *ngFor="let message of messages" >
+        <ion-badge text-wrap slot="start"*ngIf="message.userId!=UserId && message.igGroupe == cours.titre " color="light">{{ message.text }}</ion-badge>
+        <ion-badge text-wrap slot="end" *ngIf="message.userId == UserId && message.igGroupe == cours.titre "  color="success"  >
+          <br/>
+          {{ message.text }}</ion-badge>
+      </ion-item>
+  </div>
+  <div  *ngFor="let images of image">
+  <ion-list *ngIf="images.userId == UserId" class="end">
+   <ion-img [src]="images.url"></ion-img>
+ </ion-list>
+ <ion-list *ngIf="images.userId != UserId " class="start">
+  <ion-img [src]="images.url"></ion-img>
+</ion-list>
+  </div>
+ 
+ 
+
+</ion-content>
+
+<ion-footer >
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8" class="input-col">
+        <ion-input autocomplete="true" spellcheck="true" [(ngModel)]="messageText" type="text" placeholder="Entrez votre message ou l'url de l'image" name="message"></ion-input>
+      </ion-col>
+      <ion-col size="2" >
+        <ion-button (click)="sendImage()" color="success">
+          <ion-icon name="camera"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="2" class="send-col">
+        <ion-button shape="full" (click)="sendMessage()" color="success">
+          <ion-icon name="paper-plane"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

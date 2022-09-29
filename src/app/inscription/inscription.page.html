@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons >
+      <ion-back-button color="success">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>  
+</ion-header>
+
+
+<ion-content>
+  <div class="ion-padding">
+    <form [formGroup]="userForm" (ngSubmit)="signUp(userForm.value)">
+    <div class="container">
+      <div>
+        <img src="assets/Exclusion.png">
+      </div>
+      <div class="cont">
+        <h2> Inscription </h2>
+      </div>
+        <div class="wrap-input100" >
+					<ion-input class="input100" type="text" formControlName="email" placeholder="Email"></ion-input>
+          <ng-container *ngFor="let error of error_msg.email">
+            <div *ngIf="userForm.get('email').hasError(error.type) && (userForm.get('email').dirty || userForm.get('email').touched)">
+              {{ error.message }}
+            </div>
+          </ng-container>
+				</div>
+        <div class="wrap-input100">
+					<input class="input100" type="text" formControlName="name" placeholder="Nom d'utilisateur">
+				</div>
+        <div class="wrap-input100">
+					<select class="input100"  formControlName="salle" placeholder="Niveau">
+                <option>Ing 1</option>
+								<option>Ing 2</option>
+								<option>Ing 3</option>
+								<option>Ing 4</option>
+                <option>Ing 5</option>
+          </select>
+				</div>
+        <div class="wrap-input100">
+					<input class="input100" type="password" formControlName="password" placeholder="Mot de passe">
+          <ng-container *ngFor="let error of error_msg.password">
+            <div *ngIf="userForm.get('password').hasError(error.type) && (userForm.get('password').dirty || userForm.get('password').touched)">
+              {{ error.message }}
+            </div>
+        </ng-container>
+				</div>	
+    </div>
+    <div style="text-align: center;">
+      <ion-button class="ionbutton" type="submit" [disabled]="!userForm.valid" (click)="goToLogin()"> S'inscrire </ion-button>
+    </div>
+    <p class="ion-text-center">
+      Vous avez déjà un compte?  <a (click)="goToLogin()">Connectez-vous</a>
+    </p>
+    <label class="ion-text-center" color="danger">{{errorMsg}}</label>
+    <label class="ion-text-center" color="success">{{successMsg}}</label>
+  </form>
+  </div>
+</ion-content>
